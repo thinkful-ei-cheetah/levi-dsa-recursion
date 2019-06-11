@@ -10,3 +10,19 @@
 // This will give you the words "east", "eats", "esat", "esta", "etas", and "etsa". 
 // Continue this way until you find all the anagrams for "east". Then you can use "a" 
 // as a prefix and permute the remaining words "est". For "east", there should be 24 words.
+
+let ana = function(str, pref = ' ') {
+  if(str <= 0) console.log(pref + str)
+  else {
+    for(let i = 0; i < str.length; i++) {
+      let currChar = str.substring(i, i + 1)
+      let prevChar = str.substring(0, i)
+      let otherChar = str.substring(i + 1)
+      ana(prevChar + otherChar, pref + currChar)
+    }
+  }
+}
+
+ana('east')
+
+// ana('east') = ['east', 'eats', 'esat', 'esta', 'etas', 'etsa', ...] 24 total

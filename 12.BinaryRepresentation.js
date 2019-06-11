@@ -3,3 +3,12 @@
 // or 25 as an input and print 11001 as an output. Note that the binary representation 
 // of 0 should be 0.
 
+
+let bin = function (num) {
+  if(num === 0) {
+    return ''
+  }
+  return `${bin(Math.floor(num / 2))}${(num % 2)}`
+}
+
+bin(25)

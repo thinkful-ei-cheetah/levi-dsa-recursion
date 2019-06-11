@@ -8,3 +8,21 @@
 // *     |   *   *  |   *    *    *  |
 
 // 1st       2nd           3rd             nth?  
+
+let triangularNumSeq = function(num) {
+  if (num <= 0) {
+    return 0;
+  }
+  return num + triangularNumSeq( num -1 )
+}
+
+triangularNumSeq(3)
+
+// check: number =< 0
+// adding current number to sequence
+// evaluate number - 1
+
+// input = 1 -> output = 1
+// input = 2 -> output = 3
+// input = 3 -> output = 6
+// input = 4 -> output = 10

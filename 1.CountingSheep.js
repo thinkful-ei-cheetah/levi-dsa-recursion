@@ -8,3 +8,21 @@
 // 2: Another sheep jump over the fence
 // 1: Another sheep jump over the fence
 // All sheep jumped over the fence
+
+let sheep = function(num) {
+  // base case
+  if (num === 0) {
+    return 'All sheep jumped over the fence'
+  }
+  // recursion
+  return `${num}: Another sheep jumps over the fence \n` + sheep(num - 1)
+}
+
+console.log(sheep(3))
+
+// check to see if we are out of sheep
+// count how many sheep we currently have
+// check to see if we have any more sheep left to count
+
+// input -> 3
+// output -> 3: Another sheep jump over the fence

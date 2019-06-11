@@ -25,3 +25,61 @@
 // as well as passing though a cell that you have already passed before are forbidden.
 
 // For the above maze, a possible exit can be RRDDLLDDRRRRRR
+
+let mySmallMaze = [
+  [' ', ' ', ' '],
+  [' ', '*', ' '],
+  [' ', ' ', 'e']
+];
+
+let escape = function(maze, pos=0, row=0, col=0, dir='S' , path = []) {
+  if (col < 0 || row < 0) return;
+  else if (col >= maze[0].length || row >= maze.length) return;
+  
+  path[pos] = dir;
+  pos++;
+
+  if(maze[row][col] === 'e'){
+    console.log(path);
+    return;
+  }
+
+  if(maze[row][col] === ' '){
+    // The current cell is free. Mark it as visited
+    maze[row][col] = 's';
+    // Invoke recursion ot explore all possible directions
+    escape(maze, pos, row - 1, col, 'U', path); // Up
+    escape(maze, pos, row, col + 1, 'R', path); // Right
+    escape(maze, pos, row + 1, col, 'D', path); // Down
+    escape(maze, pos, row, col - 1, 'L', path); // Left
+  }
+  // Remove the last direction from the path
+  pos--;
+}
+
+escape(mySmallMaze)
+
+// are we at the exit?
+//   if so, we're done
+//     return our path to freedom
+// are we out of bounds?
+//   if so, we're on a bad path => return false
+// are we in an open path?
+//   if not, we're on a bad path => return false
+//   if we are on an open path...
+//     Make note of our movement
+//     then...
+//       try right
+//       try down
+//       try left
+//       try up
+
+// escape([
+//   [' ', '*']      // DR
+//   [' ', 'e']
+// ])
+
+// escape([
+//   [' ', ' ']      // RD
+//   ['*', 'e']
+// ])
